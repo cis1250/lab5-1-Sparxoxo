@@ -8,23 +8,16 @@
 # 4. Iterate through words and update frequencies.
 
 import re
-
-#This is a function that checks if a text qualifies as a sentence. You do not need to modify this!
-def is_sentence(text):
-    # Check if the text is not empty and is a string
-    if not isinstance(text, str) or not text.strip():
-        return False
+import string
         
 def get_sentence():
     """Ask the user to enter a valid sentence."""
-    while True:
-        sentence = input("Enter a sentence: ")
+    
+    sentence = input("Enter a sentence: ")
 
-        if sentence and sentence[0].isupper() and sentence[-1] in ".!?":
-            return sentence
-        else:
-            print("Please start with a capital letter and end with a period, question mark, or exclamation point.")
-
+    while not is_sentence(sentence):
+        sentence = input("Invalid: Please start with a capital letter and end with a period, question mark, or exclamation point: ")
+    return sentence
 
 def calculate_frequencies(sentence):
     """Count how many times each word appears."""
@@ -49,6 +42,26 @@ def print_frequencies(words, freqs):
     print("\nWord Frequencies:")
     for i in range(len(words)):
         print(f"{words[i]}: {freqs[i]}")
+
+
+def is_sentence(text):
+    # Check if the text is not empty and is a string
+    if not isinstance(text, str) or not text.strip():
+        return False
+
+    # Check for starting with a capital letter
+    if not text[0].isupper():
+        return False
+
+    # Check for ending punctuation
+    if not re.search(r'[.!?]$', text):
+        return False
+
+    # Check if it contains at least one word (non-whitespace characters)
+    if not re.search(r'\w+', text):
+        return False
+
+    return True
 
 
 def main():
