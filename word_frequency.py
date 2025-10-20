@@ -1,4 +1,9 @@
-import string
+#!/usr/bin/env python3
+
+# Word frequency exercise
+# TODO: (Read detailed instructions in the Readme file)import string
+
+import re
 
 def get_sentence():
     """Ask the user to enter a valid sentence."""
