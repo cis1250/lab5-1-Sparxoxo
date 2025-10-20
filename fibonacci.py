@@ -24,7 +24,6 @@ def print_fibonacci(sequence):
     print(" ".join(str(num) for num in sequence))
 
 
-# --- Main Program ---
 n = get_positive_integer()
 fib_sequence = generate_fibonacci(n)
 print_fibonacci(fib_sequence)
