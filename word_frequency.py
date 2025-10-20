@@ -9,6 +9,12 @@
 
 import re
 
+#This is a function that checks if a text qualifies as a sentence. You do not need to modify this!
+def is_sentence(text):
+    # Check if the text is not empty and is a string
+    if not isinstance(text, str) or not text.strip():
+        return False
+        
 def get_sentence():
     """Ask the user to enter a valid sentence."""
     while True:
